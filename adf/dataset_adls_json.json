@@ -1,0 +1,42 @@
+{
+  "name": "ds_adls_json",
+  "properties": {
+    "linkedServiceName": {
+      "referenceName": "ls_portfolio_adls",
+      "type": "LinkedServiceReference",
+      "parameters": {
+        "storageAccountUrl": "https://YOUR_STORAGE_ACCOUNT.dfs.core.windows.net"
+      }
+    },
+    "parameters": {
+      "fileSystem": {
+        "type": "String"
+      },
+      "folderPath": {
+        "type": "String"
+      },
+      "fileName": {
+        "type": "String"
+      }
+    },
+    "type": "Json",
+    "typeProperties": {
+      "location": {
+        "type": "AzureBlobFSLocation",
+        "fileSystem": {
+          "value": "@dataset().fileSystem",
+          "type": "Expression"
+        },
+        "folderPath": {
+          "value": "@dataset().folderPath",
+          "type": "Expression"
+        },
+        "fileName": {
+          "value": "@dataset().fileName",
+          "type": "Expression"
+        }
+      }
+    },
+    "schema": {}
+  }
+}

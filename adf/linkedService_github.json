@@ -1,0 +1,11 @@
+{
+  "name": "ls_github_rest",
+  "properties": {
+    "type": "RestService",
+    "typeProperties": {
+      "url": "https://api.github.com/",
+      "enableServerCertificateValidation": true,
+      "authenticationType": "Anonymous"
+    }
+  }
+}

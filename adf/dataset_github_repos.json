@@ -1,0 +1,22 @@
+{
+  "name": "ds_github_repos",
+  "properties": {
+    "linkedServiceName": {
+      "referenceName": "ls_github_rest",
+      "type": "LinkedServiceReference"
+    },
+    "parameters": {
+      "githubUser": {
+        "type": "String"
+      }
+    },
+    "type": "RestResource",
+    "typeProperties": {
+      "relativeUrl": {
+        "value": "@concat('users/', dataset().githubUser, '/repos?per_page=100&sort=updated')",
+        "type": "Expression"
+      }
+    },
+    "schema": []
+  }
+}

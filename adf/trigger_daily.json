@@ -1,0 +1,26 @@
+{
+  "name": "tr_daily_github_portfolio",
+  "properties": {
+    "type": "ScheduleTrigger",
+    "typeProperties": {
+      "recurrence": {
+        "frequency": "Day",
+        "interval": 1,
+        "startTime": "2026-07-17T06:00:00Z",
+        "timeZone": "UTC"
+      }
+    },
+    "pipelines": [
+      {
+        "pipelineReference": {
+          "referenceName": "pl_github_to_portfolio_adls",
+          "type": "PipelineReference"
+        },
+        "parameters": {
+          "githubUser": "vinodyadavkannaboina099",
+          "fileSystem": "portfolio"
+        }
+      }
+    ]
+  }
+}

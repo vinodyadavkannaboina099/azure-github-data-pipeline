@@ -1,0 +1,76 @@
+{
+  "name": "pl_github_to_portfolio_adls",
+  "properties": {
+    "parameters": {
+      "githubUser": {
+        "type": "String",
+        "defaultValue": "vinodyadavkannaboina099"
+      },
+      "fileSystem": {
+        "type": "String",
+        "defaultValue": "portfolio"
+      }
+    },
+    "activities": [
+      {
+        "name": "Copy GitHub repositories to ADLS",
+        "type": "Copy",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.00:10:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "RestSource",
+            "httpRequestTimeout": "00:01:40",
+            "requestInterval": "00.00:00:00.010",
+            "requestMethod": "GET",
+            "additionalHeaders": "Accept: application/vnd.github+json\nUser-Agent: vinod-portfolio-pipeline"
+          },
+          "sink": {
+            "type": "JsonSink",
+            "storeSettings": {
+              "type": "AzureBlobFSWriteSettings"
+            },
+            "formatSettings": {
+              "type": "JsonWriteSettings",
+              "filePattern": "arrayOfObjects"
+            }
+          },
+          "enableStaging": false
+        },
+        "inputs": [
+          {
+            "referenceName": "ds_github_repos",
+            "type": "DatasetReference",
+            "parameters": {
+              "githubUser": {
+                "value": "@pipeline().parameters.githubUser",
+                "type": "Expression"
+              }
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "referenceName": "ds_adls_json",
+            "type": "DatasetReference",
+            "parameters": {
+              "fileSystem": {
+                "value": "@pipeline().parameters.fileSystem",
+                "type": "Expression"
+              },
+              "folderPath": "raw/github",
+              "fileName": "repos.json"
+            }
+          }
+        ]
+      }
+    ],
+    "annotations": ["portfolio", "github", "adls"]
+  }
+}

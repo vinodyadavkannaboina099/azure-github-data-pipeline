@@ -1,0 +1,19 @@
+{
+  "name": "ls_portfolio_adls",
+  "properties": {
+    "parameters": {
+      "storageAccountUrl": {
+        "type": "String"
+      }
+    },
+    "type": "AzureBlobFS",
+    "typeProperties": {
+      "url": "@{linkedService().storageAccountUrl}",
+      "authenticationType": "ManagedIdentity"
+    },
+    "connectVia": {
+      "referenceName": "AutoResolveIntegrationRuntime",
+      "type": "IntegrationRuntimeReference"
+    }
+  }
+}
