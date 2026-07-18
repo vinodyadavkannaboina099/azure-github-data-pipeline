@@ -23,7 +23,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy data1",
+						"name": "Copy_raw_to_processed",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -71,20 +71,36 @@
 							{
 								"referenceName": "ds_portfolio_raw_csv",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"filename": {
+										"value": "@pipeline().parameters.sourceFileName",
+										"type": "Expression"
+									}
+								}
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "ds_portfolio_processed_csv",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"filename": {
+										"value": "@concat('processed_', pipeline().parameters.sourceFileName)",
+										"type": "Expression"
+									}
+								}
 							}
 						]
 					}
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"sourceFileName": {
+						"type": "string",
+						"defaultValue": "sample.csv"
+					}
 				},
 				"annotations": [],
 				"lastPublishTime": "2026-07-18T19:32:19Z"
@@ -103,12 +119,20 @@
 					"referenceName": "ls_portfolio_storage",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"filename": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "sample_processed.csv",
+						"fileName": {
+							"value": "@dataset().fileName",
+							"type": "Expression"
+						},
 						"folderPath": "processed",
 						"fileSystem": "portfolio"
 					},
@@ -132,12 +156,21 @@
 					"referenceName": "ls_portfolio_storage",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"filename": {
+						"type": "string",
+						"defaultValue": "sample.csv"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "sample.csv",
+						"fileName": {
+							"value": "@dataset().fileName",
+							"type": "Expression"
+						},
 						"folderPath": "raw",
 						"fileSystem": "portfolio"
 					},
