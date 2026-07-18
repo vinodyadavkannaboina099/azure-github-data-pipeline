@@ -1,0 +1,32 @@
+{
+	"name": "trg_daily_process_all_raw_files",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_process_all_raw_files",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2026-07-18T21:34:00",
+				"timeZone": "Eastern Standard Time",
+				"schedule": {
+					"minutes": [
+						59
+					],
+					"hours": [
+						11
+					]
+				}
+			}
+		}
+	}
+}
