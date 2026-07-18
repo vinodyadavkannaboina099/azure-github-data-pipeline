@@ -1,0 +1,15 @@
+{
+	"name": "adf-vinod-data-pipeline-2026",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "66cec4d7-3da4-4768-af1b-d03fab7f75a8",
+		"tenantId": "7afb9e22-9308-4186-8e29-ea231ff3baf7"
+	}
+}

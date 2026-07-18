@@ -1,0 +1,11 @@
+{
+	"name": "ls_portfolio_storage",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://vinodportfolio.dfs.core.windows.net/"
+		}
+	}
+}
