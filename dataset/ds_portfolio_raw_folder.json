@@ -1,0 +1,18 @@
+{
+	"name": "ds_portfolio_raw_folder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_portfolio_storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "raw",
+				"fileSystem": "portfolio"
+			}
+		}
+	}
+}
