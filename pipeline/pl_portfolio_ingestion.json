@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Copy_raw_to_processed",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -50,17 +50,35 @@
 				"inputs": [
 					{
 						"referenceName": "ds_portfolio_raw_csv",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": {
+								"value": "@pipeline().parameters.sourceFileName",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "ds_portfolio_processed_csv",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": {
+								"value": "@concat('processed_', pipeline().parameters.sourceFileName)",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"parameters": {
+			"sourceFileName": {
+				"type": "string",
+				"defaultValue": "sample.csv"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2026-07-18T19:32:19Z"
 	},
