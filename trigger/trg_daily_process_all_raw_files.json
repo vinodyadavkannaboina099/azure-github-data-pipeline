@@ -2,7 +2,7 @@
 	"name": "trg_daily_process_all_raw_files",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
