@@ -1,0 +1,24 @@
+{
+	"name": "ds_archive_binary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_portfolio_storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "@dataset().fileName",
+				"folderPath": "archive",
+				"fileSystem": "portfolio"
+			}
+		}
+	}
+}
